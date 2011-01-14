@@ -1,0 +1,30 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           aPerson
+    theme:                 aAdmin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          aPeople_admin
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        display: [ first_name, last_name, email, _headshot ]      
+        object_actions:
+          _edit: ~
+          headshot:
+            label:  <span class="icon"></span>Choose headshot
+            action: headshot
+            params: class=a-btn icon no-label a-users
+          _delete: ~
+      filter:
+        display: [ first_name, last_name, email ]      
+      form:    ~
+      edit:    ~
+      new:     ~
