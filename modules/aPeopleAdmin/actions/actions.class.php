@@ -21,13 +21,14 @@ class aPeopleAdminActions extends autoAPeopleAdminActions
     {
       $url = 'aMedia/select?' .
         http_build_query(array(
+          'engine-slug' => '/admin/media',
           'multiple' => false,
           'label' => 'Choose a person headshot', 
           'aMediaId' => $person->getHeadshotId(),
           'type' => 'image',
           'minimum-width' => 100,
           'minimum-height' => 120,
-          'after' => 'aPeopleAdmin/headshot?id='.$person->getId()
+          'after' => $this->getController()->genUrl('aPeopleAdmin/headshot?id='.$person->getId())
         ));
 
       return $this->executeMedia($request, $url);
@@ -46,10 +47,7 @@ class aPeopleAdminActions extends autoAPeopleAdminActions
   
   public function executeMedia(sfWebRequest $request, $url)
   {    
-    aRouteTools::pushTargetEnginePage('/admin/media');
     $url = $this->getController()->genUrl($url);
-    aRouteTools::popTargetEnginePage('aMedia');
-    
     return $this->redirect($url);
   }
 }
