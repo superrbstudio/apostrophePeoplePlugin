@@ -26,8 +26,8 @@ class aPeopleAdminActions extends autoAPeopleAdminActions
           'label' => 'Choose a person headshot', 
           'aMediaId' => $person->getHeadshotId(),
           'type' => 'image',
-          'minimum-width' => 100,
-          'minimum-height' => 120,
+          'minimum-width' => 150,
+          'minimum-height' => 200,
           'after' => $this->getController()->genUrl('aPeopleAdmin/headshot?id='.$person->getId())
         ));
 

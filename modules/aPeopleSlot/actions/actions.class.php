@@ -1,5 +1,5 @@
 <?php
-class PersonSlotActions extends BaseaSlotActions
+class aPeopleSlotActions extends BaseaSlotActions
 {
   public function executeEdit(sfRequest $request)
   {
@@ -7,7 +7,7 @@ class PersonSlotActions extends BaseaSlotActions
 
     // Hyphen between slot and form to please our CSS
     $value = $this->getRequestParameter('slot-form-' . $this->id);
-    $this->form = new PersonSlotEditForm($this->id, array());
+    $this->form = new aPeopleSlotEditForm($this->id, array());
     $this->form->bind($value);
     if ($this->form->isValid())
     {

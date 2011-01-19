@@ -1,5 +1,5 @@
 <?php
-class PersonSlotComponents extends BaseaSlotComponents
+class aPeopleSlotComponents extends BaseaSlotComponents
 {
   public function executeEditView()
   {
@@ -10,7 +10,7 @@ class PersonSlotComponents extends BaseaSlotComponents
     // from an earlier pass
     if (!isset($this->form))
     {
-      $this->form = new PersonSlotEditForm($this->id, $this->slot->getArrayValue());
+      $this->form = new aPeopleSlotEditForm($this->id, $this->slot->getArrayValue());
     }
   }
   
@@ -22,7 +22,7 @@ class PersonSlotComponents extends BaseaSlotComponents
     $this->people = false;
     if ($this->values)
     {
-      $this->people = Doctrine::getTable('Person')
+      $this->people = Doctrine::getTable('aPerson')
         ->createQuery()
         ->whereIn('id', $this->values['people'])
         ->execute();

@@ -11,11 +11,11 @@ class aPeopleSlotEditForm extends BaseForm
   public function configure()
   {
     $this->widgetSchema['people'] = new sfWidgetFormDoctrineChoice(array(
-      'model' => 'Person',
+      'model' => 'aPerson',
       'order_by' => array('last_name', 'asc'),
       'multiple' => true, 
     ));
-    $this->validatorSchema['people'] = new sfValidatorDoctrineChoice(array('model' => 'Person', 'multiple' => true));
+    $this->validatorSchema['people'] = new sfValidatorDoctrineChoice(array('model' => 'aPerson', 'multiple' => true));
     
     // Ensures unique IDs throughout the page. Hyphen between slot and form to please our CSS
     $this->widgetSchema->setNameFormat('slot-form-' . $this->id . '[%s]');
