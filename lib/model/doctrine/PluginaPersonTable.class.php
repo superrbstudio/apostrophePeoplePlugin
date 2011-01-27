@@ -9,7 +9,7 @@ abstract class PluginaPersonTable extends Doctrine_Table
 		return Doctrine_Core::getTable('aPerson');
   }
 
-  public function getAtoZ($category = null, $chars = null)
+  public function getAtoZ($category = null, $chars = null, $q = null)
   {
     if (is_null($chars))
     {
@@ -22,10 +22,13 @@ abstract class PluginaPersonTable extends Doctrine_Table
         $chars = explode(',', $chars);
       }
     }
+		if(is_null($q))
+		{
+			$q = Doctrine::getTable('aPerson')
+	      ->createQuery('p');
+		}
 
-    $q = Doctrine::getTable('aPerson')
-      ->createQuery('p')
-      ->orderBy('last_name');
+    $q->orderBy('last_name');
 
 
     $people = $q->execute();

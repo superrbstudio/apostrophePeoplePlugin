@@ -50,8 +50,8 @@ aPerson:
     Categories:
       class: aCategory
       refClass: aPersonToACategory
-      local: category_id
-      foreign: person_id
+      local: person_id
+      foreign: category_id
 
 aPersonToACategory:
   actAs:
