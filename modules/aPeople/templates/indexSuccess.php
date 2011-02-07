@@ -1,4 +1,4 @@
-<?php slot('body_class','a-person index') ?>
+<?php slot('body_class','a-person view-all') ?>
 
 <?php slot('a-subnav') ?>
 <div class="a-subnav-wrapper blog a-ui clearfix">
@@ -23,23 +23,16 @@
 			<li><span><?php echo $char; ?></span></li>			
 		<?php endif ?>		
 	<?php endforeach ?>
-	  <li class="last"><?php echo link_to('View All People', 'aPeople') ?></li>
 	</ul>
-	
-	<?php if (isset($school)): ?>
-		<h4 class="filter-sentence">You are viewing people within <?php echo $school ?>. <a href="<?php echo url_for('aPeople') ?>">View Everyone</a></h4>
-	<?php endif ?>
-	
-	<?php if ($sf_params->get('category')): ?>
-		<h4 class="filter-sentence">You are viewing people interested in "<?php echo $category ?>." <a href="<?php echo url_for('aPeople') ?>">View Everyone</a></h4>
-	<?php endif ?>
-	
+
 	<div class="people">
 	<?php foreach ($peopleChars as $char => $people): ?>
 		<?php if (count($people)): ?>
 		<a class="person-anchor" name="<?php echo $char ?>"></a>
 		<h3 class="person-letter"><?php echo $char ?></h3>
-      <?php include_partial('aPeople/people', array('people' => $people)) ?>
+		
+      <?php include_partial('aPeople/people', array('people' => $people)) ?>    
+
 		<?php endif ?>
 	<?php endforeach ?>
 	</div>
@@ -56,7 +49,6 @@
 			<li><span><?php echo $char; ?></span></li>			
 		<?php endif ?>		
 	<?php endforeach ?>
-    <li class="last"><?php echo link_to('View All People', 'aPeople') ?></li>
 	</ul>
 </div>
 

@@ -38,10 +38,7 @@ class PluginaPeopleActions extends aEngineActions
     // otherwise, the list will be too long and we will want to browse by alpha
     $this->anchorNavigation = ($request->hasParameter('category') || $request->hasParameter('viewAll'));
 
-    if ($request->hasParameter('viewAll'))
-    {
-      $this->setTemplate('viewAll');
-    }
+    return $this->pageTemplate;
   }
   
 	public function buildQuery()
@@ -95,6 +92,7 @@ class PluginaPeopleActions extends aEngineActions
 			// return;
 			//     }
 
-
+		
+    return $this->pageTemplate;
   }
 }
