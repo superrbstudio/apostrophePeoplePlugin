@@ -21,4 +21,10 @@ class aPeopleComponents extends sfComponents
   {
 
   }
+  
+  public function executeSearch(sfWebRequest $request)
+  {
+    $q = $this->q;
+    $this->results = Doctrine::getTable('aPerson')->createQuery('p')->where('concat(coalesce(p.first_name, ""), coalesce(p.middle_name, ""), coalesce(p.last_name, "")) LIKE ?', "%$q%")->limit(10)->execute();
+  }
 }
