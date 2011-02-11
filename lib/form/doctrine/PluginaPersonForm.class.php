@@ -19,5 +19,6 @@ abstract class PluginaPersonForm extends BaseaPersonForm
 		$this->validatorSchema['created_at'] = new sfValidatorDate(array('required' => false));
 		$this->widgetSchema['updated_at']    = new awidgetformjquerydate(array('image' => '/apostrophePlugin/images/a-icon-datepicker.png'));
 		$this->validatorSchema['updated_at'] = new sfValidatorDate(array('required' => false));
+		unset($this['headshot_id']);
 	}
 }
