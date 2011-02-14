@@ -12,6 +12,7 @@
   $slot = isset($slot) ? $sf_data->getRaw('slot') : null;
   $slug = isset($slug) ? $sf_data->getRaw('slug') : null;
 ?>
+
 <?php foreach ($people as $person): ?>
 <div id="a-person-<?php echo $person->getId() ?>" class="a-person default">
 	<p class="name">

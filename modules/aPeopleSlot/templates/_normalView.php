@@ -1,20 +1,5 @@
 <?php
   // Compatible with sf_escaping_strategy: true
-  $editable = isset($editable) ? $sf_data->getRaw('editable') : null;
-  $feed = isset($feed) ? $sf_data->getRaw('feed') : null;
-  $invalid = isset($invalid) ? $sf_data->getRaw('invalid') : null;
-  $name = isset($name) ? $sf_data->getRaw('name') : null;
-  $pageid = isset($pageid) ? $sf_data->getRaw('pageid') : null;
-  $permid = isset($permid) ? $sf_data->getRaw('permid') : null;
-  $options = isset($options) ? $sf_data->getRaw('options') : null;
-  $slot = isset($slot) ? $sf_data->getRaw('slot') : null;
-  $url = isset($url) ? $sf_data->getRaw('url') : null;
-  $dimensions = isset($dimensions) ? $sf_data->getRaw('dimensions') : null;
-
-?>
-
-<?php
-  // Compatible with sf_escaping_strategy: true
   $dimensions = isset($dimensions) ? $sf_data->getRaw('dimensions') : null;
   $editable = isset($editable) ? $sf_data->getRaw('editable') : null;
   $item = isset($item) ? $sf_data->getRaw('item') : null;

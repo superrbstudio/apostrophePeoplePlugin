@@ -24,7 +24,6 @@ class aPeopleSlotComponents extends BaseaSlotComponents
     {
       $this->form = new aPeopleSlotEditForm($this->id, $this->slot->getArrayValue());
     }
-
   }
 
   public function executeNormalView()
@@ -35,12 +34,13 @@ class aPeopleSlotComponents extends BaseaSlotComponents
     $this->options['slideshowOptions']['width']	= ((isset($this->options['slideshowOptions']['width']))? $this->options['slideshowOptions']['width']:100);
 		$this->options['slideshowOptions']['height'] = ((isset($this->options['slideshowOptions']['height']))? $this->options['slideshowOptions']['height']:100);
 		$this->options['slideshowOptions']['resizeType'] = ((isset($this->options['slideshowOptions']['resizeType']))? $this->options['slideshowOptions']['resizeType']:'c');
-    $this->people = false;
+		$this->people = false;
     if ($this->values)
     {
       $this->people = Doctrine::getTable('aPerson')
         ->createQuery()
         ->whereIn('id', $this->values['people'])
+				->orderBy('last_name ASC')
         ->execute();
     }
   }
