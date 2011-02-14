@@ -25,12 +25,16 @@
 	<div class="name">
 		<?php echo link_to($person->getName(), 'aPeople_show', array('slug' => $person->getSlug())) ?>
   </div>
+	<?php if ($person->getDepartment()): ?>
 	<div class="department">
 		<?php echo ($person->getDepartment()) ?>
   </div>
+	<?php endif ?>
+	<?php if ($person->getEmail()): ?>
 	<div class="email">
 		<?php echo mail_to($person->getEmail(), $person->getEmail()) ?>
 	</div>
+	<?php endif ?>
 	<div class="body">
 		<?php echo aHTML::limitWords(html_entity_decode($person->getBody()), 15, array('append_ellipsis' => true, )) ?>
 	</div>
@@ -39,5 +43,3 @@
 	</div>
 </div>
 <?php endforeach ?>
-
-&#x27;
