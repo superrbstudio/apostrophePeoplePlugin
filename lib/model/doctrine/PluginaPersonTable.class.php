@@ -2,8 +2,7 @@
 
 
 abstract class PluginaPersonTable extends Doctrine_Table
-{
-    
+{  
   public static function getInstance()
   {
 		return Doctrine_Core::getTable('aPerson');
@@ -60,5 +59,10 @@ abstract class PluginaPersonTable extends Doctrine_Table
 	  }
 	  
 	  return $tagChars;
+  }
+  
+  public function getEngineCategories()
+  {
+    return aEngineTools::getEngineCategories('aPeople');
   }
 }
