@@ -46,7 +46,7 @@ abstract class PluginaPerson extends BaseaPerson
 
   public function getEngineSlug()
   {    
-    if(!isset($this->engineSlug))
+    if (!isset($this->engineSlug))
     {
       $this->engineSlug = aEngineTools::getEngineSlug($this);
     }
