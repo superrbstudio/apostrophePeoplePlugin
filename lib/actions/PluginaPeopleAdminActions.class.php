@@ -17,6 +17,13 @@ class PluginaPeopleAdminActions extends autoAPeopleAdminActions
   {
     $person = Doctrine::getTable('aPerson')->find($request->getParameter('id'));
 
+    if ($request->hasParameter('aMediaUnset'))
+    {
+      $person->setHeadshotId(null);
+      $person->save();
+      return $this->redirect('aPeopleAdmin/index');
+    }
+    
     if (!$request->hasParameter('aMediaId') && !$request->getParameter('aMediaCancel'))
     {
       $url = 'aMedia/select?' .
