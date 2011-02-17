@@ -20,5 +20,9 @@ abstract class PluginaPersonForm extends BaseaPersonForm
 		$this->widgetSchema['updated_at']    = new awidgetformjquerydate(array('image' => '/apostrophePlugin/images/a-icon-datepicker.png'));
 		$this->validatorSchema['updated_at'] = new sfValidatorDate(array('required' => false));
 		unset($this['headshot_id']);
+
+		// Alphabetize the Categories dropdown 
+   	$this->getWidget('categories_list')->setOption('query', Doctrine::getTable('aCategory')->createQuery()->orderBy('aCategory.name asc'));	
 	}
+	
 }
