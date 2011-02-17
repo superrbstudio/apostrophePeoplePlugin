@@ -23,7 +23,7 @@
 		</div>
 	<?php endif ?>
 	<div class="name">
-		<?php echo link_to($person->getName().(!($person->getSuffix()) ? null : ', '.$person->getSuffix(), 'aPeople_show', array('slug' => $person->getSlug(), 'engine-slug' => $person->getEngineSlug())) ?>
+		<?php echo link_to($person->getName().(!($person->getSuffix()) ? null : ', '.$person->getSuffix()), 'aPeople_show', array('slug' => $person->getSlug(), 'engine-slug' => $person->getEngineSlug())) ?>
   </div>
 	<?php if ($person->getDepartment()): ?>
 	<div class="department">
