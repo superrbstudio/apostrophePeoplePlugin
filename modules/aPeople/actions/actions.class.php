@@ -10,5 +10,4 @@
  */
 class aPeopleActions extends PluginaPeopleActions
 {
- 
 }
