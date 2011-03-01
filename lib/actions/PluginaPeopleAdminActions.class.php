@@ -33,8 +33,10 @@ class PluginaPeopleAdminActions extends autoAPeopleAdminActions
           'label' => 'Choose a person headshot', 
           'aMediaId' => $person->getHeadshotId(),
           'type' => 'image',
-          'minimum-width' => 150,
+          'minimum-width' => 170,
           'minimum-height' => 200,
+					'aspect-height' => 200,
+					'aspect-width' => 170, 
           'after' => $this->getController()->genUrl('aPeopleAdmin/headshot?id='.$person->getId())
         ));
 
