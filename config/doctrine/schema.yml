@@ -47,6 +47,7 @@ aPerson:
       local: headshot_id
       foreign: id
       type: one
+      onDelete: SET NULL
     Categories:
       class: aCategory
       refClass: aPersonToACategory
