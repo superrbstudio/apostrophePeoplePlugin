@@ -1,4 +1,4 @@
-<h4><a href="" id="school-filter" class="a-people-nav-toggle">By Schools</a></h4>
+<h4><a href="" id="school-filter" class="a-people-nav-toggle">By Categories</a></h4>
 
 <?php /* ?>
 <h4><a href="" id="tag-filter" class="a-people-nav-toggle">By Research Interests</a></h4>

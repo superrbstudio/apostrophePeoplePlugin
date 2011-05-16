@@ -10,4 +10,14 @@
  */
 class aPeopleAdminGeneratorConfiguration extends BaseAPeopleAdminGeneratorConfiguration
 {
+	public function getEditTitle()
+  {
+    return 'Editing Person';
+  }
+
+  public function getNewTitle()
+  {
+    return 'New Person';
+  }
+  
 }
