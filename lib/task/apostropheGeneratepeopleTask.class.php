@@ -34,61 +34,66 @@ EOF;
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
-    $maleNames = sfConfig::get('sf_plugins_dir') . '/apostrophePeoplePlugin/data/dist.male.first';
-    $femaleNames = sfConfig::get('sf_plugins_dir') . '/apostrophePeoplePlugin/data/dist.female.first';
-    $lastNames = sfConfig::get('sf_plugins_dir') . '/apostrophePeoplePlugin/data/dist.all.last';
+    $maleNames = $this->loadNamesFromCensusFile(sfConfig::get('sf_plugins_dir') . '/apostrophePeoplePlugin/data/dist.male.first');
+    $femaleNames = $this->loadNamesFromCensusFile(sfConfig::get('sf_plugins_dir') . '/apostrophePeoplePlugin/data/dist.female.first');
+    $lastNames = $this->loadNamesFromCensusFile(sfConfig::get('sf_plugins_dir') . '/apostrophePeoplePlugin/data/dist.all.last');
 
-    $maleNames = file_get_contents($maleNames);
-    $femaleNames = file_get_contents($femaleNames);
-    $lastNames = file_get_contents($lastNames);
+    $conn = Doctrine_Manager::connection();
 
-    $maleNames = explode("\n", $maleNames);
-    $femaleNames = explode("\n", $femaleNames);
-    $lastNames = explode("\n", $lastNames);
-
-    foreach($maleNames as &$line)
+    try
     {
-      $line = explode(' ', $line);
-    }
+      $conn->beginTransaction();
 
-    foreach($femaleNames as &$line)
-    {
-      $line = explode(' ', $line);
-    }
-
-    foreach($lastNames as &$line)
-    {
-      $line = explode(' ', $line);
-    }
-
-    for ($i = 0; $i < $options['count']; $i++)
-    {
-      $firstName = '';
-      $lastName = '';
-
-      if (rand(0,1) == 1)
+      for ($i = 0; $i < $options['count']; $i++)
       {
-        $firstName = $maleNames[rand(0, (count($maleNames) - 1))];
-        $firstName = trim($firstName[0]);
-        $firstName = ucfirst(strtolower($firstName));
-      }
-      else
-      {
-        $firstName = $femaleNames[rand(0, (count($femaleNames) - 1))];
-        $firstName = trim($firstName[0]);
-        $firstName = ucfirst(strtolower($firstName));
+        $firstName = '';
+        $lastName = '';
+
+        if (rand(0,1) == 1)
+        {
+          $firstName = $maleNames[rand(0, (count($maleNames) - 1))];
+          $firstName = trim($firstName[0]);
+          $firstName = ucfirst(strtolower($firstName));
+        }
+        else
+        {
+          $firstName = $femaleNames[rand(0, (count($femaleNames) - 1))];
+          $firstName = trim($firstName[0]);
+          $firstName = ucfirst(strtolower($firstName));
+        }
+
+        $lastName = $lastNames[rand(0, (count($lastNames) - 1))];
+        $lastName = trim($lastName[0]);
+        $lastName = ucfirst(strtolower($lastName));
+
+        $person = new aPerson();
+        $person->first_name = $firstName;
+        $person->last_name = $lastName;
+        $person->save();
+
+        echo "Creating " . $person . "...\n";
       }
 
-      $lastName = $lastNames[rand(0, (count($lastNames) - 1))];
-      $lastName = trim($lastName[0]);
-      $lastName = ucfirst(strtolower($lastName));
-
-      $person = new aPerson();
-      $person->first_name = $firstName;
-      $person->last_name = $lastName;
-      $person->save();
-
-      echo "Creating " . $person . "...\n";
+      $conn->commit();
     }
+    catch (Exception $e)
+    {
+      $conn->rollback();
+      var_dump($e->getMessage());
+    }
+
+  }
+
+  public function loadNamesFromCensusFile($filename)
+  {
+    $data = file_get_contents($filename);
+    $data = explode("\n", $data);
+
+    foreach($data as &$row)
+    {
+      $row = preg_split('/\s+/', trim($row));
+    }
+
+    return $data;
   }
 }
