@@ -54,21 +54,27 @@ EOF;
           $firstName = $maleNames[rand(0, (count($maleNames) - 1))];
           $firstName = trim($firstName[0]);
           $firstName = ucfirst(strtolower($firstName));
+          $sex = 'Male';
         }
         else
         {
           $firstName = $femaleNames[rand(0, (count($femaleNames) - 1))];
           $firstName = trim($firstName[0]);
           $firstName = ucfirst(strtolower($firstName));
+          $sex = 'Female';
         }
 
         $lastName = $lastNames[rand(0, (count($lastNames) - 1))];
         $lastName = trim($lastName[0]);
         $lastName = ucfirst(strtolower($lastName));
+        
+        $email = strtolower($firstName . '+' . rand(0, 100000) . '@example.com');
 
         $person = new aPerson();
         $person->first_name = $firstName;
         $person->last_name = $lastName;
+        $person->email = $email;
+        $person->sex = $sex;
         $person->save();
 
         echo "Creating " . $person . "...\n";
