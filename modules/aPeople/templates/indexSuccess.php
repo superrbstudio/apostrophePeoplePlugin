@@ -4,7 +4,7 @@
 <div class="a-subnav-wrapper blog a-ui clearfix">
 	<div class="a-subnav-inner">
 		<h4 class="filter-title">Filter People</h4>
-		<?php include_component('aPeople', 'sidebar') ?>
+		<?php include_component('aPeople', 'sidebar', array('defaultCategories' => $defaultCategories)) ?>
 	</div>
 </div>
 <?php end_slot() ?>

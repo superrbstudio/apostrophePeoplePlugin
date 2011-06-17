@@ -38,6 +38,19 @@ class PluginaPeopleActions extends aEngineActions
     // otherwise, the list will be too long and we will want to browse by alpha
     $this->anchorNavigation = ($request->hasParameter('category') || $request->hasParameter('viewAll'));
 
+
+    // Set default categories for the people sidebar
+    $this->defaultCategories = array();
+    if ($request->getParameter('aPeopleCategoryFilter'))
+    {
+      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
+
+      if (!empty($categoryFilter['categories']))
+      {
+        $this->defaultCategories = $categoryFilter['categories'];
+      }
+    }
+
     return $this->pageTemplate;
   }
   
@@ -46,12 +59,28 @@ class PluginaPeopleActions extends aEngineActions
 		$query = Doctrine::getTable('aPerson')
       ->createQuery('p')
 			->leftJoin('p.Categories c');
-		
+
 		$ids = array();
 		foreach($this->page->Categories as $category)
 		{
-			$ids = $category->id;
+			$ids[] = $category->id;
 		}
+
+    // If the filter has been set, filter by categories
+    if ($this->getRequest()->hasParameter('aPeopleCategoryFilter'))
+    {
+      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
+
+      if (!empty($categoryFilter['categories']))
+      {
+        foreach($categoryFilter['categories'] as $id)
+        {
+          $ids[] = $id;
+        }
+      }
+
+    }
+
 		if(count($ids))
 		{
 			$query->andWhereIn('c.id', $ids);

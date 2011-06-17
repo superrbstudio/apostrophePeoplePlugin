@@ -19,7 +19,15 @@ class PluginaPeopleComponents extends sfComponents
    */
   public function executeSidebar(sfWebRequest $request)
   {
+    $defaults = array();
 
+    if (!empty($this->defaultCategories))
+    {
+      $defaults['categories'] = $this->defaultCategories;
+    }
+
+    $this->form = new aPeopleCategoryForm($defaults);
+    $this->actionUrl = url_for($request->getUri());
   }
   
   public function executeSearch(sfWebRequest $request)
