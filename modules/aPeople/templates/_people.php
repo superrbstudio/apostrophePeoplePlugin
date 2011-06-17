@@ -8,4 +8,3 @@
 	<?php a_js_call('aPeople.personUrl(?)', array('id' => '#a-person-'.$person->getId(), 'url' => url_for('aPeople_show', array('slug' => $person->getSlug())))) ?>	
 </div>
 <?php endforeach ?>
-
