@@ -36,7 +36,12 @@ aPerson:
     link:
       type: string
     sex:
-      type: string(1)
+      type: enum
+      length: 6
+      values:
+        - "Male"
+        - "Female"
+      default: ""
     ethnicity:
       type: string(255)
     headshot_id:
