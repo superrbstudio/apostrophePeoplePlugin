@@ -286,3 +286,33 @@ h3.person-letter
 	position: relative;
 	float: left;
 }
+
+/*People Sidebar category filter */
+
+
+#aPeopleCategoryForm .a-multiple-select
+{
+	display: inline;
+	position: relative;
+	float: left;
+	clear: none;
+	width:80%;
+}
+
+#aPeopleCategoryForm .a-multiple-select-input
+{
+	width: 100%;
+}
+
+#aPeopleCategoryForm .add
+{
+	clear: none;
+}
+
+#aPeopleCategoryForm .a-people-filter
+{
+	display: inline;
+	position: relative;
+	float: right;
+	clear: none;
+}

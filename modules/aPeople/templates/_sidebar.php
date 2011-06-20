@@ -1,16 +1,12 @@
-<h4><a href="" id="school-filter" class="a-people-nav-toggle">By Categories</a></h4>
-
-<div id="aPeopleCategoryForm">
+<?php
+  use_helper('a');
+?>
+<div id="aPeopleCategoryForm" class="a-ui">
   <?php echo $form->renderFormTag($actionUrl) ?>
   <?php echo $form ?>
-  <input type="submit" value="Filter" />
+  <input type="submit" class="a-btn a-submit a-people-filter"value="Go" />
   </form>
 </div>
 
-<script type="text/javascript">
-
-  $(document).ready(function() {
-    aMultipleSelect("#aPeopleCategoryForm", {'choose-one' : 'Choose a Category'});
-  });
-
-</script>
+<?php $options = array('choose-one' => a_('Select to Filter')) ?>
+<?php a_js_call('aMultipleSelect(?, ?)', '#aPeopleCategoryForm', $options) ?>
