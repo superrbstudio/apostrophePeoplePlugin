@@ -1,12 +1,27 @@
 <?php
   use_helper('a');
 ?>
-<div id="aPeopleCategoryForm" class="a-ui">
-  <?php echo $form->renderFormTag($actionUrl) ?>
-  <?php echo $form ?>
-  <input type="submit" class="a-btn a-submit a-people-filter"value="Go" />
+<form id="aPeopleCategoryForm" class="a-ui">
+		<div class="a-form-row a-hidden">
+			<?php echo $form->renderHiddenFields() ?>
+		</div>
+		<div class="a-form-row name">
+			<?php echo $form['name']->renderLabel('Name') ?>
+			<div class="a-form-field">
+				<?php echo $form['name']->render() ?>
+			</div>
+			<?php echo $form['name']->renderError() ?>
+		</div>
+		<div class="a-form-row categories" id="aPeople-categories">
+			<?php echo $form['categories']->renderLabel('Categories') ?>
+			<div class="a-form-field">
+				<?php echo $form['categories']->render() ?>
+			</div>
+			<?php echo $form['categories']->renderError() ?>
+		</div>
+		<div class="a-form-row submit">
+					<?php echo a_submit_button('Filter', array('big','a-people-filter')) ?>			
+		</div>
   </form>
-</div>
 
-<?php $options = array('choose-one' => a_('Select to Filter')) ?>
-<?php a_js_call('aMultipleSelect(?, ?)', '#aPeopleCategoryForm', $options) ?>
+<?php a_js_call('aMultipleSelect(?, ?)', '#aPeople-categories', array('choose-one' => a_('Choose Categories'))) ?>

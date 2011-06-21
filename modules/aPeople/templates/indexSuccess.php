@@ -3,7 +3,7 @@
 <?php slot('a-subnav') ?>
 <div class="a-subnav-wrapper blog a-ui clearfix">
 	<div class="a-subnav-inner">
-		<h4 class="filter-title">Filter By</h4>
+		<h3 class="filter-title">Filter People</h3>
 		<?php include_component('aPeople', 'sidebar', array()) ?>
 	</div>
 </div>

@@ -290,29 +290,40 @@ h3.person-letter
 /*People Sidebar category filter */
 
 
-#aPeopleCategoryForm .a-multiple-select
-{
-	display: inline;
-	position: relative;
-	float: left;
-	clear: none;
-	width:80%;
-}
-
 #aPeopleCategoryForm .a-multiple-select-input
 {
 	width: 100%;
 }
 
-#aPeopleCategoryForm .add
+#aPeopleCategoryForm .a-form-row.a-hidden
 {
-	clear: none;
+	display: none;
+}
+
+#aPeopleCategoryForm .a-form-row.name .a-form-field
+{
+	width: 100%;
+}
+
+
+#aPeopleCategoryForm .a-form-row.submit
+{
+	margin-left: 0px;
 }
 
 #aPeopleCategoryForm .a-people-filter
 {
 	display: inline;
 	position: relative;
-	float: right;
-	clear: none;
+	float: left;
+	width: 100%;
+	clear: both;
+}
+
+#aPeopleCategoryForm label
+{
+	display: block;
+	clear: both;
+	width: 100%;
+	margin-bottom: 3px;
 }
