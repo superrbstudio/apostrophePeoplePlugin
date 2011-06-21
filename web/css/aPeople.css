@@ -1,0 +1,318 @@
+
+
+.a-person h4.filter-title
+{
+}
+
+/* Alphabet Navigation =========== */
+
+.alphabet-navigation
+{
+	overflow: auto;
+	width: 100%;
+	margin-left: -3px;	
+}
+
+.alphabet-navigation li
+{
+	float: left;
+	list-style:none;
+}
+
+.alphabet-navigation li a,
+.alphabet-navigation li span
+{
+	font-size: 12px;
+	padding: 3px 5px;
+	display: block;
+	line-height: 1.2;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-moz-user-select: none;
+	cursor: default;
+}
+
+.alphabet-navigation li span
+{
+	color: #bbb;
+}
+
+.alphabet-navigation li a:hover,
+.alphabet-navigation li a:focus
+{
+	background: #e5e5e5;
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.alphabet-navigation li a:focus,
+.alphabet-navigation li a.active
+{
+	background: #004785;
+	color: #fff;
+}
+
+.alphabet-navigation li.last { float: right; }
+
+
+/* Person Index Success */
+
+.a-person .a-subnav-wrapper h4
+{
+	margin: 5px 0;
+}
+
+.a-person .a-subnav-wrapper .a-nav-subnav
+{
+	overflow: hidden;
+	margin-bottom: 10px;
+	padding-bottom:10px;
+}
+
+.a-people-nav-toggle
+{
+	margin: 3px 0;
+}
+
+.a-people-nav-toggle:focus
+{
+	text-decoration: none;
+}
+
+.a-people-nav
+{
+	position: relative;
+	width: auto;
+	background: #eaeaea;
+	padding: 10px;
+	-moz-box-shadow:rgba(0,0,0,0.25) 0px 0px 10px;
+	-webkit-box-shadow:rgba(0,0,0,0.25) 0px 0px 10px;
+	-opera-box-shadow:rgba(0,0,0,0.25) 0px 0px 10px;
+	-khtml-box-shadow:rgba(0,0,0,0.25) 0px 0px 10px;
+	box-shadow:rgba(0,0,0,0.25) 0px 0px 10px;
+	z-index: 899;
+	display:none;
+}
+
+.a-people-nav span.a-close
+{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	-moz-border-radius: 10px !important;
+	-webkit-border-radius: 10px !important;
+	border-radius: 10px !important;
+}
+
+.a-people-nav span.a-close:hover
+{
+	background-color: #fff !important;
+}
+
+.a-people-nav .research-interests-set
+{
+	clear: both;
+	position: relative;
+	margin: 0 0 5px 0;
+}
+
+.a-people-nav ul
+{
+	float: left;
+	clear: right;
+	width: auto;
+	margin-bottom: 15px;
+}
+
+.a-people-nav .a-nav-item
+{
+	width: 160px;
+	margin: 0 0 5px 0;
+}
+
+.a-people-nav .a-nav-item a
+{
+	width: 100%;
+	padding: 1px;
+	line-height: 1.3;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.filter-sentence
+{
+	margin-top: 10px;
+}
+
+div.people
+{
+	float: left;
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+div.people div.a-person
+{
+	float: left;
+	clear:both;
+	width: 100%;
+	border-top: 1px solid #eee;
+	margin-top: 2px;
+	padding-top: 2px;
+	color: #666;
+}
+
+div.a-person.closed .a-person-content
+{
+	display: none;
+}
+
+div.a-person.open .a-person-content
+{
+	display: inline;
+}
+
+div.people div.a-person p.name
+{
+	font:18px/1.2 georgia,times,serif;
+	color:#004785;
+	line-height: 1.2;
+	margin: 3px 0;
+	float: left;
+	width: 100%;
+	clear: both;
+}
+
+div.people div.a-person p.name a
+{
+	float: left;
+	margin-left: -20px;
+	padding-left: 20px;
+	background: url(/apostrophePlugin/images/a-icon-arrow-toggle.png) no-repeat 0 -40px;
+}
+
+div.people div.a-person p.name a.open
+{
+	background-position: 0 -20px;
+}
+
+.person-image
+{
+	float: left;
+	width: 150px;
+	height: 200px;
+	clear: left;
+	margin-right: 20px;
+}
+
+.person-info
+{
+	float: left;
+	width: 100%;
+	clear: both;
+	margin-bottom: 0px;
+}
+
+.person .person-info .person-job
+{
+	float: left;
+	clear: both;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.person .person-info .person-job li
+{
+	float: left;
+	margin-right: 5px;
+}
+
+.person-research,
+.person-related-news
+{
+	width: 100%;
+	float: left;
+	clear: both;
+	margin-top: 10px;
+}
+.person-research h5,
+.person-related-news h5
+{
+	font:15px/1.2 georgia,times,serif;
+	color: #444;
+}
+
+.person-research ul,
+.person-related-news ul
+{
+	margin-left: 10px;
+}
+
+.person-research ul li,
+.person-related-news ul li
+{
+	float: left;
+	clear: both;
+	line-height: 12px;
+	margin: 3px 0;
+}
+
+.person-related-news .personRelatedNews
+{
+	margin-bottom:0;
+}
+
+
+h3.person-letter
+{
+	font:24px/1.2 georgia,times,serif;
+	color:#004785;
+	margin: 10px 0;
+	float:left;
+}
+
+.person-anchor { float:left; }
+
+
+/* People Admin ====================================== */
+
+.aPeopleAdmin .a-admin-date,
+.aPeopleAdmin .a-admin-date select
+{
+	display: inline;
+	position: relative;
+	float: left;
+}
+
+/*People Sidebar category filter */
+
+
+#aPeopleCategoryForm .a-multiple-select
+{
+	display: inline;
+	position: relative;
+	float: left;
+	clear: none;
+	width:80%;
+}
+
+#aPeopleCategoryForm .a-multiple-select-input
+{
+	width: 100%;
+}
+
+#aPeopleCategoryForm .add
+{
+	clear: none;
+}
+
+#aPeopleCategoryForm .a-people-filter
+{
+	display: inline;
+	position: relative;
+	float: right;
+	clear: none;
+}
