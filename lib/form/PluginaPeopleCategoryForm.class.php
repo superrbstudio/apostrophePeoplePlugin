@@ -6,10 +6,7 @@ class PluginaPeopleCategoryForm extends BaseForm
     parent::configure();
 
 
-    $categories = Doctrine_Query::create()
-      ->from('aCategory INDEXBY id')
-      ->select('name')
-      ->fetchArray();
+    $categories = $this->getCategoryQuery()->fetchArray();
 
     $choices = array();
 
@@ -22,5 +19,12 @@ class PluginaPeopleCategoryForm extends BaseForm
     $this->validatorSchema['categories'] = new sfValidatorChoice(array('choices' => array_keys($choices)));
 
     $this->widgetSchema->setNameFormat('aPeopleCategoryFilter[%s]');
+  }
+
+  public function getCategoryQuery()
+  {
+    return Doctrine_Query::create()
+      ->from('aCategory INDEXBY id')
+      ->select('name');
   }
 }

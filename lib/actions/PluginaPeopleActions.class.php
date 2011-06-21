@@ -19,6 +19,21 @@ class PluginaPeopleActions extends aEngineActions
    */
   public function executeIndex(sfWebRequest $request)
   {
+    // Set default categories for the people sidebar as a session variable
+    $defaultCategories = array();
+    if ($request->getParameter('aPeopleCategoryFilter'))
+    {
+      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
+
+      if (!empty($categoryFilter['categories']))
+      {
+        $defaultCategories = $categoryFilter['categories'];
+      }
+
+      aPeopleTools::setAttribute('categories_filter', $defaultCategories);
+    }
+
+
     $query = $this->buildQuery(); 
     $this->navChars    = Doctrine::getTable('aPerson')->getAtoZ($request->getParameter('category'), null, $query);
 		$query = $this->buildQuery();
@@ -38,19 +53,6 @@ class PluginaPeopleActions extends aEngineActions
     // otherwise, the list will be too long and we will want to browse by alpha
     $this->anchorNavigation = ($request->hasParameter('category') || $request->hasParameter('viewAll'));
 
-
-    // Set default categories for the people sidebar
-    $this->defaultCategories = array();
-    if ($request->getParameter('aPeopleCategoryFilter'))
-    {
-      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
-
-      if (!empty($categoryFilter['categories']))
-      {
-        $this->defaultCategories = $categoryFilter['categories'];
-      }
-    }
-
     return $this->pageTemplate;
   }
   
@@ -65,23 +67,13 @@ class PluginaPeopleActions extends aEngineActions
 		{
 			$ids[] = $category->id;
 		}
-
-    // If the filter has been set, filter by categories
-    if ($this->getRequest()->hasParameter('aPeopleCategoryFilter'))
+    
+    foreach(aPeopleTools::getAttribute('categories_filter', array()) as $id)
     {
-      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
-
-      if (!empty($categoryFilter['categories']))
-      {
-        foreach($categoryFilter['categories'] as $id)
-        {
-          $ids[] = $id;
-        }
-      }
-
+      $ids[] = $id;
     }
 
-		if(count($ids))
+    if(count($ids))
 		{
 			$query->andWhereIn('c.id', $ids);
 		}
