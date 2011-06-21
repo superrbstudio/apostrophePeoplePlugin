@@ -19,11 +19,16 @@ class PluginaPeopleComponents extends sfComponents
    */
   public function executeSidebar(sfWebRequest $request)
   {
+    $this->form = new aPeopleCategoryForm($this->getFilterDefaults());
+    $this->actionUrl = url_for($request->getUri());
+  }
+
+  protected function getFilterDefaults()
+  {
     $defaults = array();
     $defaults['categories'] = aPeopleTools::getAttribute('categories_filter', array());
 
-    $this->form = new aPeopleCategoryForm($defaults);
-    $this->actionUrl = url_for($request->getUri());
+    return $defaults;
   }
   
   public function executeSearch(sfWebRequest $request)

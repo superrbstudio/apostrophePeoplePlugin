@@ -20,9 +20,9 @@ class PluginaPeopleActions extends aEngineActions
   public function executeIndex(sfWebRequest $request)
   {
     // Set default categories for the people sidebar as a session variable
-    $defaultCategories = array();
     if ($request->getParameter('aPeopleCategoryFilter'))
     {
+      $defaultCategories = array();
       $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
 
       if (!empty($categoryFilter['categories']))
@@ -62,17 +62,7 @@ class PluginaPeopleActions extends aEngineActions
       ->createQuery('p')
 			->leftJoin('p.Categories c');
 
-		$ids = array();
-		foreach($this->page->Categories as $category)
-		{
-			$ids[] = $category->id;
-		}
-    
-    foreach(aPeopleTools::getAttribute('categories_filter', array()) as $id)
-    {
-      $ids[] = $id;
-    }
-
+    $ids = $this->getQueryCategoryIds();
     if(count($ids))
 		{
 			$query->andWhereIn('c.id', $ids);
@@ -80,6 +70,22 @@ class PluginaPeopleActions extends aEngineActions
 		
 		return $query;
 	}
+
+  protected function getQueryCategoryIds()
+  {
+    $ids = array();
+		foreach($this->page->Categories as $category)
+		{
+			$ids[] = $category->id;
+		}
+
+    foreach(aPeopleTools::getAttribute('categories_filter', array()) as $id)
+    {
+      $ids[] = $id;
+    }
+
+    return $ids;
+  }
 
   /**
    * Executes show action
