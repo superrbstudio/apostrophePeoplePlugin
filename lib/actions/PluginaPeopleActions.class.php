@@ -23,6 +23,8 @@ class PluginaPeopleActions extends aEngineActions
     if ($request->getParameter('aPeopleCategoryFilter'))
     {
       $defaultCategories = array();
+      $name = '';
+      
       $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
 
       if (!empty($categoryFilter['categories']))
@@ -30,6 +32,12 @@ class PluginaPeopleActions extends aEngineActions
         $defaultCategories = $categoryFilter['categories'];
       }
 
+      if (!empty($categoryFilter['name']))
+      {
+        $name = $categoryFilter['name'];
+      }
+
+      aPeopleTools::setAttribute('name_filter', $name);
       aPeopleTools::setAttribute('categories_filter', $defaultCategories);
     }
 
@@ -67,6 +75,78 @@ class PluginaPeopleActions extends aEngineActions
 		{
 			$query->andWhereIn('c.id', $ids);
 		}
+
+    $name = aPeopleTools::getAttribute('name_filter');
+    if (!empty($name))
+    {
+      $nameParts = explode(' ', $name);
+
+      $wheres = array();
+      $params = array();
+
+      foreach ($nameParts as $part)
+      {
+        $part = trim($part, ', ');
+
+        if (!empty($part))
+        {
+          $part = "%$part%";
+          $wheres[] = "LOWER(CONCAT($ra.first_name, $ra.middle_name, $ra.last_name))";
+          $params[] = "$part";
+
+          $wheres[] = "LOWER(CONCAT($ra.first_name, $ra.last_name, $ra.middle_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.first_name, $ra.last_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.first_name, $ra.middle_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER($ra.first_name)";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.middle_name, $ra.first_name, $ra.last_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.middle_name, $ra.last_name, $ra.first_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.middle_name, $ra.last_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.middle_name, $ra.first_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER($ra.middle_name)";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.last_name, $ra.first_name, $ra.middle_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.last_name, $ra.middle_name, $ra.first_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.last_name, $ra.first_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER(CONCAT($ra.last_name, $ra.middle_name))";
+          $params[] = $part;
+
+          $wheres[] = "LOWER($ra.last_name)";
+          $params[] = $part;
+        }
+      }
+
+      $whereString = '';
+      foreach($wheres as $where)
+      {
+        $whereString .= " or $where LIKE ?";
+      }
+      $whereString = substr($whereString, 4);
+
+      $query->addWhere($whereString, $params);
+    }
 		
 		return $query;
 	}

@@ -18,6 +18,9 @@ class PluginaPeopleCategoryForm extends BaseForm
     $this->widgetSchema['categories'] = new sfWidgetFormChoice(array('multiple' => true, 'choices' => $choices));
     $this->validatorSchema['categories'] = new sfValidatorChoice(array('choices' => array_keys($choices)));
 
+    $this->widgetSchema['name'] = new sfWidgetFormInput();
+    $this->validatorSchema['name'] = new sfValidatorString();
+
     $this->widgetSchema->setNameFormat('aPeopleCategoryFilter[%s]');
   }
 
