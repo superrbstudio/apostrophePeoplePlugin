@@ -15,8 +15,8 @@ abstract class PluginaPersonForm extends BaseaPersonForm
 		parent::setup();
 		$this->widgetSchema['body']    = new aWidgetFormRichTextarea(array('editor' => 'fck', 'height' => '300', 'width' => '500'));
 		$this->validatorSchema['body'] = new sfValidatorHtml(array('required' => false));
-		$this->widgetSchema['sex']     = new sfWidgetFormChoice(array('choices' => array('' => '', 'Male' => 'Male', 'Female' => 'Female')));
-		$this->validatorSchema['sex']  = new sfValidatorChoice(array('choices' => array(0 => '', 1 => 'Male', 2 => 'Female'), 'required' => false));
+		$this->widgetSchema['sex']     = new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'Male', 'Ff' => 'Female')));
+		$this->validatorSchema['sex']  = new sfValidatorChoice(array('choices' => array(0 => '', 1 => 'M', 2 => 'F'), 'required' => false));
 		unset(
 		  $this['headshot_id'],
 		  $this['created_at'],

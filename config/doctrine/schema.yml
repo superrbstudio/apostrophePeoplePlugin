@@ -37,10 +37,10 @@ aPerson:
       type: string
     sex:
       type: enum
-      length: 6
+      length: 1
       values:
-        - "Male"
-        - "Female"
+        - "M"
+        - "F"
       default: ""
     ethnicity:
       type: string(255)
