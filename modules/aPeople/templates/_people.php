@@ -1,10 +1,21 @@
+<?php use_helper('a') ?>
+
 <?php foreach ($people as $person): ?>
-<div id="a-person-<?php echo $person->getId() ?>" class="a-person ajax">
-	<p class="name">
-		<a href="#" class="person-expand-toggle ajax" id="person-expand-toggle-<?php echo $person->getId() ?>"><?php echo $person->getName() ?></a>
-  </p>
-	<div class="a-person-content" id="a-person-content-<?php echo $person->getId() ?>"></div>
-	<?php // We need a way to get an individual person's URL into javascript land so lets attach it to the #personID as .data() ?>
-	<?php a_js_call('aPeople.personUrl(?)', array('id' => '#a-person-'.$person->getId(), 'url' => url_for('aPeople_show', array('slug' => $person->getSlug())))) ?>	
+<div id="person-<?php echo $person->id ?>" class="person">
+  <h4 class="name">
+    <a class="person-expand-toggle" href="<?php echo url_for('aPeople_show', array('slug' => $person->slug)) ?>" onclick="return false"><?php echo $person->getNameAndSuffix() ?></a>
+    <div class="a-spinner a-hidden"></div>
+  </h4>
+
+  <?php // Any additional information to be displayed in the list view goes here ?>
+  <div class="person-info">
+  <?php if ($person->email): ?>
+    <ul class="person-email">
+      <li><?php echo $person->email ?></li>
+    </ul>
+  <?php endif ?>
+  </div>
+  
+  <div class="person-info-expanded"></div>
 </div>
 <?php endforeach ?>
