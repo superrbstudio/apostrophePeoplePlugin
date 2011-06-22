@@ -33,8 +33,8 @@ aPerson:
       type: string(255)
     body:
       type: string
-    link:
-      type: string
+    website:
+      type: string(255)
     sex:
       type: enum
       length: 6
