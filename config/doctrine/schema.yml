@@ -33,7 +33,7 @@ aPerson:
       type: string(255)
     body:
       type: string
-    website:
+    link:
       type: string(255)
     sex:
       type: enum
