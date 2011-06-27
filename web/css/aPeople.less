@@ -1,0 +1,211 @@
+// Alphabet Navigation
+
+.alphabet-navigation
+{
+	overflow: auto;
+	width: 100%;
+	li
+	{
+		float: left;
+		list-style:none;
+		// &.last
+		// {
+		// 	float: right; 
+		// }
+		a:hover,
+		a.active
+		{
+			background: #555;
+			color: #fff;
+		}
+		a, span
+		{
+			font-size: 12px;
+			padding: 3px 5px;
+			display: block;
+			line-height: 1.2;
+			-moz-border-radius: 2px;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+			-moz-user-select: none;
+			cursor: default;
+		}
+		span
+		{
+			color: #bbb;
+		}
+	}
+}
+
+// Person Index
+
+
+
+
+.a-person.index
+{
+	.people
+	{
+		margin: 20px 0;
+	}
+	.person-anchor
+	{
+		margin: 10px 0px;
+	}
+	.person
+	{
+		margin: 5px 0;
+		padding:5px 0;
+		border-bottom: 1px solid #ccc;
+	}
+	.people .name
+	{
+	 	a.person-expand-toggle
+		{
+			float: left;
+			margin-left: -20px;
+			padding-left: 20px;
+			background: url(/apostrophePlugin/images/a-icon-arrow-toggle.png) no-repeat 0 -40px;
+			background-repeat: no-repeat;
+			&.open
+			{
+				background-position: 0 -20px;
+			}
+		}
+	}
+	.person-info-expanded
+	{
+		margin: 5px 0px;
+		.person-image
+		{
+			width: 100px;
+			margin-right: 20px;
+			display: inline;
+			position: relative;
+			float: left;
+		}
+		.person-details
+		{
+			width: 600px;
+			display: inline;
+			position: relative;
+			float: left;
+			div
+			{
+				margin-bottom: 5px;
+			}
+		}
+		.person-jump
+		{
+			margin-top: 10px;
+			a.person-read-more
+			{
+				background-color: #999;
+				-moz-border-radius: 4px;
+				-webkit-border-top-left-radius: 4px;
+				-webkit-border-top-right-radius: 4px;
+				-webkit-border-bottom-right-radius: 4px;
+				-webkit-border-bottom-left-radius: 4px;
+				border-radius: 4px;
+				padding:3px 5px;
+				color:#fff;
+				&:hover
+				{
+					background-color: #777;
+				}
+			}
+		}
+
+	} 
+}
+
+// Show Success
+.a-person.show
+{
+	.a-content
+	{
+		width: 720px;
+		h2.person-name
+		{
+			margin-bottom: 20px;
+		}
+	}
+	.a-ui.edit-person
+	{
+		position: relative;
+		top: 5px;
+		margin-left: -25px;
+	}
+	.person-image
+	{
+		display: inline;
+		position: relative;
+		float: left;
+		width: 200px;
+		margin-right: 20px;
+	}
+	.person-details
+	{
+		display: inline;
+		position: relative;
+		float: left;
+		width: 500px;
+		div	
+		{
+			margin-bottom: 10px;
+		}
+	}
+}
+
+
+// People Sidebar
+
+
+#aPeopleCategoryForm .a-multiple-select-input
+{
+	width: 100%;
+}
+
+#aPeopleCategoryForm .a-form-row.a-hidden
+{
+	display: none;
+}
+
+#aPeopleCategoryForm .a-form-row.name .a-form-field
+{
+	width: 100%;
+}
+
+
+#aPeopleCategoryForm .a-form-row.submit
+{
+	margin-left: 0px;
+}
+
+#aPeopleCategoryForm .a-people-filter
+{
+	display: inline;
+	position: relative;
+	float: left;
+	width: 100%;
+	clear: both;
+}
+
+#aPeopleCategoryForm label
+{
+	display: block;
+	clear: both;
+	width: 100%;
+	margin-bottom: 3px;
+}
+
+// People Admin 
+
+// .aPeopleAdmin .a-admin-date,
+// .aPeopleAdmin .a-admin-date select
+// {
+// 	display: inline;
+// 	position: relative;
+// 	float: left;
+// }
+

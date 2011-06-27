@@ -59,7 +59,7 @@ class PluginaPeopleActions extends aEngineActions
 		
     // if we are filtering by tag or by school, we want to use A-Z links as anchors
     // otherwise, the list will be too long and we will want to browse by alpha
-    $this->anchorNavigation = ($request->hasParameter('category') || $request->hasParameter('viewAll'));
+    $this->anchorNavigation = ($request->hasParameter('category'));
 
     return $this->pageTemplate;
   }
@@ -167,6 +167,14 @@ class PluginaPeopleActions extends aEngineActions
     return $ids;
   }
 
+	public function executeShowPreview(sfWebRequest $request)
+	{
+		$this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
+    $this->forward404Unless($this->person);
+    
+	  return $this->renderPartial('aPeople/personPreview', array('person' => $this->person));
+	}
+
   /**
    * Executes show action
    *
@@ -178,27 +186,6 @@ class PluginaPeopleActions extends aEngineActions
   {
     $this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
     $this->forward404Unless($this->person);
-    
-    if ($request->getParameter('slim'))
-    {
-      return $this->renderPartial('aPeople/personSlim', array('person' => $this->person));
-    }
-    else
-    {
-      return $this->renderPartial('aPeople/person', array('person' => $this->person));
-    }
-			//	Should probably be something like this? so when slide-down ajax
-			//  stuff isn't happening you get the showsuccess page
-			
-			//     if ($request->getParameter('ajax'))
-			//     {
-			//       return $this->renderPartial('aPeople/person', array('person' => $this->person));
-			//     }
-			//     else
-			//     {
-			// return;
-			//     }
-
 		
     return $this->pageTemplate;
   }

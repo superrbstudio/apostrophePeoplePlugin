@@ -1,4 +1,4 @@
-<ul class="alphabet-navigation">
+<ul class="alphabet-navigation clearfix">
   <?php foreach ($navChars as $char => $people): ?>
 		<?php if (count($people)): ?>
       <?php if ($anchorNavigation): ?>

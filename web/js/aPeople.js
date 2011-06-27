@@ -3,11 +3,10 @@ $(document).ready(function() {
     var toggle = $(this);
     var url = toggle.attr('href');    
     var person = toggle.closest('.person');
-    var spinner = person.find('div.a-spinner');
     var personInfo = person.find('div.person-info');
     var bodyExpanded = person.find('div.person-info-expanded');
 
-    spinner.show();
+		$(this).toggleClass('open');
     
     // If this person's info is toggled open, hide it
     if (bodyExpanded.hasClass('expanded'))
@@ -30,7 +29,6 @@ $(document).ready(function() {
         dataType: 'html'
       });
     }
-    
-    spinner.hide();
+   
   });
 });
