@@ -1,4 +1,4 @@
-$(document).ready(function() {
+function peopleIndex () {
   $('a.person-expand-toggle').click(function() {
     var toggle = $(this);
     var url = toggle.attr('href');    
@@ -6,7 +6,7 @@ $(document).ready(function() {
     var personInfo = person.find('div.person-info');
     var bodyExpanded = person.find('div.person-info-expanded');
 
-		$(this).toggleClass('open');
+		toggle.toggleClass('open');
     
     // If this person's info is toggled open, hide it
     if (bodyExpanded.hasClass('expanded'))
@@ -26,9 +26,9 @@ $(document).ready(function() {
           bodyExpanded.addClass('expanded');
           bodyExpanded.show();
         },
-        dataType: 'html'
+        dataType: 'html',
       });
-    }
+    };
    
   });
-});
+}
