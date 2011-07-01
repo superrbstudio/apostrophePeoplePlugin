@@ -20,9 +20,6 @@ abstract class PluginaPersonForm extends BaseaPersonForm
 		$this->setWidget('sex', new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'Male', 'F' => 'Female'))));
 		$this->getWidget('categories_list')->setOption('query', Doctrine::getTable('aCategory')->createQuery()->orderBy('aCategory.name asc')); // Alphabetize categories dropdown
 
-		$this->validatorSchema['body'] = new sfValidatorHtml(array('required' => false));
-		$this->validatorSchema['sex']  = new sfValidatorChoice(array('choices' => array(0 => '', 1 => 'M', 2 => 'F'), 'required' => false));
-
    	// Set labels for form elements
     $this->widgetSchema->setLabels(array(
       'first_name' => 'First Name:',
@@ -45,7 +42,7 @@ abstract class PluginaPersonForm extends BaseaPersonForm
     ));
 
     // Set error messages for form elements
-    $this->setValidator('first_name', new aValidatorUrl(
+    $this->setValidator('first_name', new sfValidatorString(
       array('max_length' => 255, 'required' => true, 'trim' => true),
       array(
         'max_length' => 'Your first name must be shorter than %max_length% characters.',
@@ -75,7 +72,7 @@ abstract class PluginaPersonForm extends BaseaPersonForm
         'invalid' => 'Your zip code must be composed of 5 digits.'
       )
     ));
-    $this->setValidator('link', new sfValidatorUrl(
+    $this->setValidator('link', new aValidatorUrl(
       array('max_length' => 1024, 'required' => false, 'trim' => true),
       array(
         'max_length' => 'Your website URL must be shorter than %max_length% characters.',
@@ -87,6 +84,9 @@ abstract class PluginaPersonForm extends BaseaPersonForm
       array(
         'invalid' => 'Please specify a valid gender by selecting an option from the dropdown menu.'
       )
+    ));
+    $this->setValidator('body', new sfValidatorHtml(
+      array('required' => false)
     ));
 	}
 
