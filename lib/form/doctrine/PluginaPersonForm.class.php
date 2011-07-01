@@ -45,7 +45,7 @@ abstract class PluginaPersonForm extends BaseaPersonForm
     ));
 
     // Set error messages for form elements
-    $this->setValidator('first_name', new sfValidatorString(
+    $this->setValidator('first_name', new aValidatorUrl(
       array('max_length' => 255, 'required' => true, 'trim' => true),
       array(
         'max_length' => 'Your first name must be shorter than %max_length% characters.',
