@@ -1,5 +1,3 @@
-
-
 <?php if ($person->getHeadshotId()): ?>
 	<div class="person-image">
 	  <?php include_component('aSlideshowSlot', 'slideshow', array(
@@ -24,8 +22,7 @@
 		<div class="email clearfix"><?php echo mail_to($person->getEmail(), $person->getEmail()) ?></div>
 	<?php endif ?>
 	<div class="person-jump clearfix">
-			<?php echo link_to('More Info', url_for('aPeople_show', array('slug' => $person->slug)), array('class' => 'person-read-more')) ?>	
+			<?php echo link_to('More Info', url_for('aPeople_show', array('slug' => $person->slug)), array('class' => 'person-read-more')) ?>
 	</div>
 </div>
-
 <?php include_partial('a/globalJavascripts') ?>
