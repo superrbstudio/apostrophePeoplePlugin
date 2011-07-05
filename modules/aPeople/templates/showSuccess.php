@@ -32,6 +32,7 @@
 	  )) ?>
 	</div>
 <?php endif ?>
+
 <div class="person-details">
 	<?php if ($person->getBody()): ?>
 	<div class="person-body clearfix">
