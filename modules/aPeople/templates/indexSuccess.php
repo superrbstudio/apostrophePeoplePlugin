@@ -25,4 +25,4 @@
 	<?php include_partial('aPeople/alphabetNav', array('navChars' => $navChars, 'anchorNavigation' => $anchorNavigation, 'sf_params' => $sf_params)) ?>
 </div>
 
-<?php a_js_call('peopleIndex();') ?>
+<?php a_js_call('aPeople.indexSuccess(?)', array()) ?>
