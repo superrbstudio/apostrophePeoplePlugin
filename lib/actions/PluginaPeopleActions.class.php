@@ -41,7 +41,6 @@ class PluginaPeopleActions extends aEngineActions
       aPeopleTools::setAttribute('categories_filter', $defaultCategories);
     }
 
-
     $query = $this->buildQuery(); 
     $this->navChars    = Doctrine::getTable('aPerson')->getAtoZ($request->getParameter('category'), null, $query);
 		$query = $this->buildQuery();
@@ -69,6 +68,7 @@ class PluginaPeopleActions extends aEngineActions
 		$query = Doctrine::getTable('aPerson')
       ->createQuery('p')
 			->leftJoin('p.Categories c');
+		$ra = $query->getRootAlias();
 
     $ids = $this->getQueryCategoryIds();
     if(count($ids))
