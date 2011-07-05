@@ -1,4 +1,4 @@
-<?php slot('body_class','a-person index') ?>
+<?php slot('body_class','a-people index') ?>
 
 <?php slot('a-subnav') ?>
 <div class="a-ui a-subnav-wrapper clearfix">

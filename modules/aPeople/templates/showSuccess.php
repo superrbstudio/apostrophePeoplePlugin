@@ -4,7 +4,7 @@
 	$user = sfContext::getInstance()->getUser();	
 ?>
 
-<?php slot('body_class','a-person show') ?>
+<?php slot('body_class','a-people show') ?>
 
 <?php slot('a-subnav') ?>
 <div class="a-ui a-subnav-wrapper clearfix">
