@@ -10,7 +10,7 @@
 		    <?php include_component('aSlideshowSlot', 'slideshow', array(
 			  	'items' => array($person->Headshot),
 			  	'id' => $person->id.'-headshot',
-			  	'options' => array('width' => 50, 'height' => 50, 'resizeType' => 'c', 'arrows' => false)
+			  	'options' => array('width' => 50, 'height' => 50, 'resizeType' => 'c', 'arrows' => false, 'idSuffix' => 'person'),
 			  )) ?>
 			<?php endif ?>
 		</div>

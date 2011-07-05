@@ -3,7 +3,7 @@
 	  <?php include_component('aSlideshowSlot', 'slideshow', array(
 	  	'items' => array($person->getHeadshot()),
 	  	'id' => $person->getId().'-headshot',
-	  	'options' => array('width' => 100, 'height' => 120, 'resizeType' => 'c', 'arrows' => false)
+	  	'options' => array('width' => 100, 'height' => 120, 'resizeType' => 'c', 'arrows' => false, 'idSuffix' => 'personPreview'),
 	  )) ?>
 	</div>
 <?php endif ?>
