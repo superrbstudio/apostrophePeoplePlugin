@@ -62,6 +62,29 @@ class PluginaPeopleActions extends aEngineActions
     return $this->pageTemplate;
   }
   
+  public function executeShowPreview(sfWebRequest $request)
+	{
+		$this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
+    $this->forward404Unless($this->person);
+    
+	  return $this->renderPartial('aPeople/personPreview', array('person' => $this->person));
+	}
+
+  /**
+   * Executes show action
+   *
+   * Displays more detailed information about a single Person. 
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
+    $this->forward404Unless($this->person);
+		
+    return $this->pageTemplate;
+  }
+  
 	public function buildQuery()
 	{
 		$this->query = Doctrine::getTable('aPerson')
@@ -167,28 +190,5 @@ class PluginaPeopleActions extends aEngineActions
     }
 
     return $ids;
-  }
-
-	public function executeShowPreview(sfWebRequest $request)
-	{
-		$this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
-    $this->forward404Unless($this->person);
-    
-	  return $this->renderPartial('aPeople/personPreview', array('person' => $this->person));
-	}
-
-  /**
-   * Executes show action
-   *
-   * Displays more detailed information about a single Person. 
-   *
-   * @param sfRequest $request A request object
-   */
-  public function executeShow(sfWebRequest $request)
-  {
-    $this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
-    $this->forward404Unless($this->person);
-		
-    return $this->pageTemplate;
   }
 }
