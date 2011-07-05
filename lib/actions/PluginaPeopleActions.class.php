@@ -1,10 +1,10 @@
 <?php
 
 /**
- * aPerson actions.
+ * aPeople actions.
  *
- * @package    cs
- * @subpackage aPerson
+ * @package    apostrophe
+ * @subpackage apostrophePeoplePlugin
  * @author     P'unk Avenue
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
@@ -24,7 +24,7 @@ class PluginaPeopleActions extends aEngineActions
     {
       $defaultCategories = array();
       $name = '';
-      
+
       $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
 
       if (!empty($categoryFilter['categories']))
@@ -44,7 +44,7 @@ class PluginaPeopleActions extends aEngineActions
     $this->buildQuery();
     $this->navChars = Doctrine::getTable('aPerson')->getAtoZ($request->getParameter('category'), null, $this->query);
     $this->peopleChars = Doctrine::getTable('aPerson')->getAtoZ($request->getParameter('category'), $request->getParameter('char'), $this->query);
-		
+
 		$peopleCount = 0;
 		foreach ($this->navChars as $char => $people)
 		{
@@ -54,26 +54,26 @@ class PluginaPeopleActions extends aEngineActions
 			}
 		}
 		$this->peopleCount = $peopleCount;
-		
+
     // if we are filtering by tag or by school, we want to use A-Z links as anchors
     // otherwise, the list will be too long and we will want to browse by alpha
     $this->anchorNavigation = ($request->hasParameter('category'));
 
     return $this->pageTemplate;
   }
-  
+
   public function executeShowPreview(sfWebRequest $request)
 	{
 		$this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
     $this->forward404Unless($this->person);
-    
+
 	  return $this->renderPartial('aPeople/personPreview', array('person' => $this->person));
 	}
 
   /**
    * Executes show action
    *
-   * Displays more detailed information about a single Person. 
+   * Displays more detailed information about a single Person.
    *
    * @param sfRequest $request A request object
    */
@@ -81,10 +81,10 @@ class PluginaPeopleActions extends aEngineActions
   {
     $this->person = Doctrine::getTable('aPerson')->findOneBySlug($request->getParameter('slug'));
     $this->forward404Unless($this->person);
-		
+
     return $this->pageTemplate;
   }
-  
+
 	public function buildQuery()
 	{
 		$this->query = Doctrine::getTable('aPerson')
@@ -103,7 +103,7 @@ class PluginaPeopleActions extends aEngineActions
       $this->addFilterByNameParams($name);
     }
 	}
-	
+
 	protected function addFilterByNameParams($name)
 	{
 	  $ra = $this->query->getRootAlias();
@@ -178,7 +178,7 @@ class PluginaPeopleActions extends aEngineActions
   protected function getQueryCategoryIds()
   {
     $ids = array();
-    
+
 		foreach($this->page->Categories as $category)
 		{
 			$ids[] = $category->id;
