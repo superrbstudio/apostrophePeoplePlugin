@@ -1,12 +1,7 @@
 <?php slot('body_class','a-people index') ?>
 
 <?php slot('a-subnav') ?>
-	<div class="a-ui a-subnav-wrapper clearfix">
-		<div class="a-subnav-inner">
-			<h4 class="filter-title">Filter By:</h4>
-			<?php include_component('aPeople', 'sidebar') ?>
-		</div>
-	</div>
+	<?php include_component('aPeople', 'sidebar') ?>
 <?php end_slot() ?>
 
 <div class="people-wrapper">
