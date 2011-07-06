@@ -19,8 +19,12 @@ class BaseaPeopleComponents extends sfComponents
    */
   public function executeSidebar(sfWebRequest $request)
   {
-    $this->form = new aPeopleCategoryForm($this->getFilterDefaults());
+    $defaults = $this->getFilterDefaults();
+    
+    $this->form = new aPeopleCategoryForm($defaults);
     $this->actionUrl = url_for($request->getUri());
+
+    $this->hasName = !empty($defaults['name']);
   }
 
   protected function getFilterDefaults()

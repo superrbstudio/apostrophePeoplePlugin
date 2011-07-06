@@ -1,6 +1,5 @@
 <?php
   $current = isset($current) ? $sf_data->getRaw('current') : 'aPeople/index';
-	$search = strlen($sf_params->get('search')) ? $sf_params->get('search') : null;
 ?>
 
 <?php use_helper('a') ?>
@@ -13,10 +12,8 @@
 		    <form id="aPeopleSearchForm" class="a-ui a-people-search-form" action="<?php echo url_for(aUrl::addParams($current, array("search" => false))) ?>" method="post">
 		  		<div class="a-form-row"> <?php // div is for page validation ?>
 		  			<label for="a-search-people-field" style="display:none;">Search</label><?php // label for accessibility ?>
-		  			<?php // Second parameter as escaping method is hopelessly broken when escaping is turned off, ?>
-		  			<?php // we're stuck relying on the double escape guard in htmlspecialchars ?>
-		  			<input type="text" name="search" value="<?php echo htmlspecialchars($search) ?>" class="a-search-field" id="a-search-people-field"/>
-						<?php if (isset($search)): ?>
+            <?php echo $form['name']->render() ?>
+						<?php if ($hasName): ?>
 					    <?php echo link_to(__('Clear Search', null, 'apostrophe'), aUrl::addParams($current, array('search' => '')), array('class' => 'a-clear-search-button', 'id' => 'a-people-search-remove', 'title' => __('Clear Search', null, 'apostrophe'), )) ?>
 						<?php else: ?>
 		  				<input type="image" src="<?php echo image_path('/apostrophePlugin/images/a-special-blank.gif') ?>" class="submit a-search-submit" value="Search Pages" alt="Search" title="Search"/>

@@ -20,29 +20,24 @@ class BaseaPeopleActions extends aEngineActions
   public function executeIndex(sfWebRequest $request)
   {
     // Set default categories for the people sidebar as a session variable
-    // Set default categories for the people sidebar as a session variable
-    if ($request->isMethod('POST'))
+    $defaultCategories = array();
+    $name = '';
+    if ($request->hasParameter('aPeopleCategoryFilter'))
     {
-      $defaultCategories = array();
-      $name = '';
-      if ($request->hasParameter('aPeopleCategoryFilter'))
+      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
+
+      if (!empty($categoryFilter['categories']))
       {
-        $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
-
-        if (!empty($categoryFilter['categories']))
-        {
-          $defaultCategories = $categoryFilter['categories'];
-        }
-
-        if (!empty($categoryFilter['name']))
-        {
-          $name = $categoryFilter['name'];
-        }
+        $defaultCategories = $categoryFilter['categories'];
       }
 
-      aPeopleTools::setAttribute('name_filter', $name);
-      aPeopleTools::setAttribute('categories_filter', $defaultCategories);
+      if (!empty($categoryFilter['name']))
+      {
+        $name = $categoryFilter['name'];
+      }
     }
+    aPeopleTools::setAttribute('name_filter', $name);
+    aPeopleTools::setAttribute('categories_filter', $defaultCategories);
 
     $this->buildQuery();
     $this->navChars = Doctrine::getTable('aPerson')->getAtoZ($request->getParameter('category'), null, $this->query);
