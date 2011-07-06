@@ -20,21 +20,24 @@ class BaseaPeopleActions extends aEngineActions
   public function executeIndex(sfWebRequest $request)
   {
     // Set default categories for the people sidebar as a session variable
-    if ($request->getParameter('aPeopleCategoryFilter'))
+    // Set default categories for the people sidebar as a session variable
+    if ($request->isMethod('POST'))
     {
       $defaultCategories = array();
       $name = '';
-
-      $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
-
-      if (!empty($categoryFilter['categories']))
+      if ($request->hasParameter('aPeopleCategoryFilter'))
       {
-        $defaultCategories = $categoryFilter['categories'];
-      }
+        $categoryFilter = $this->getRequest()->getParameter('aPeopleCategoryFilter');
 
-      if (!empty($categoryFilter['name']))
-      {
-        $name = $categoryFilter['name'];
+        if (!empty($categoryFilter['categories']))
+        {
+          $defaultCategories = $categoryFilter['categories'];
+        }
+
+        if (!empty($categoryFilter['name']))
+        {
+          $name = $categoryFilter['name'];
+        }
       }
 
       aPeopleTools::setAttribute('name_filter', $name);
