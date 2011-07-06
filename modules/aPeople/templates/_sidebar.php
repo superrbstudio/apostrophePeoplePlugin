@@ -43,8 +43,5 @@
 	</div>
 </div>
 
-<?php a_js_call('apostrophe.selfLabel(?)', array('selector' => '#a-search-people-field', 'title' => a_('Search By Name'), 'focus' => false)) ?>
-
-
 <?php a_js_call('aMultipleSelect(?, ?)', '#aPeople-categories', array('choose-one' => a_('Choose Categories'))) ?>
-<?php a_js_call('apostrophe.selfLabel(?)', array('selector' => '#a-search-people-field', 'title' => a_('Search By Name'), 'focus' => false)) ?>
+<?php a_js_call('apostrophe.selfLabel(?)', array('selector' => '#aPeopleCategoryFilter_name', 'title' => a_('Search By Name'), 'focus' => false)) ?>
