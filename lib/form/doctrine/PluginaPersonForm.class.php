@@ -16,6 +16,8 @@ abstract class PluginaPersonForm extends BaseaPersonForm
 
 		$this->unsetFields();
 
+    $this->widgetSchema->setFormFormatterName('aAdmin');
+
 		$this->setWidget('body', new aWidgetFormRichTextarea(array('editor' => 'fck', 'height' => '300', 'width' => '500')));
 		$this->setWidget('sex', new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'Male', 'F' => 'Female'))));
 		$this->getWidget('categories_list')->setOption('query', Doctrine::getTable('aCategory')->createQuery()->orderBy('aCategory.name asc')); // Alphabetize categories dropdown
