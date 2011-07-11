@@ -16,4 +16,9 @@ abstract class PluginaPersonToACategoryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('PluginaPersonToACategory');
     }
+    
+    public function mergeCategory($old_id, $new_id)
+    {
+      Doctrine::getTable('aCategory')->mergeCategory($old_id, $new_id, 'aPersonToACategory', 'category_id', true, 'person_id');
+    }
 }

@@ -12,5 +12,4 @@
  */
 abstract class PluginaPersonToACategory extends BaseaPersonToACategory
 {
-
 }

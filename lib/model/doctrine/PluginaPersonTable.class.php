@@ -64,5 +64,5 @@ abstract class PluginaPersonTable extends Doctrine_Table
   public function getEngineCategories()
   {
     return aEngineTools::getEngineCategories('aPeople');
-  }
+  }  
 }
