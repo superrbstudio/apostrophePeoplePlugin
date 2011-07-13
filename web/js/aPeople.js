@@ -30,7 +30,7 @@ function aPeopleConstructor()
 	          bodyExpanded.addClass('expanded');
 	          bodyExpanded.show();
 	        },
-	        dataType: 'html',
+	        dataType: 'html'
 	      });
 	    };
 	  });
