@@ -26,9 +26,9 @@ generator:
         object_actions:
           _edit: ~
           headshot:
-            label:  <span class="icon"></span>Choose headshot
+            label:  <span class="icon"></span>Choose Photo
             action: headshot
-            params: class=a-btn icon no-label a-users
+            params: class="a-btn icon no-label a-users" title="Choose Photo"
           _delete: ~
       filter:
         display:
