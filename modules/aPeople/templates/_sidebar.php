@@ -9,7 +9,7 @@
 
 		<div class="a-subnav-section search">
 		  <div class="a-search a-search-sidebar">
-		    <form id="aPeopleSearchForm" class="a-ui a-people-search-form" action="<?php echo url_for(aUrl::addParams($current, array("search" => false))) ?>" method="get">
+		    <form id="aPeopleSearchForm" class="a-ui a-search a-search-people" action="<?php echo url_for(aUrl::addParams($current, array("search" => false))) ?>" method="get">
 		  		<div class="a-form-row"> <?php // div is for page validation ?>
 		  			<label for="a-search-people-field" style="display:none;">Search</label><?php // label for accessibility ?>
             <?php echo $form['name']->render() ?>
