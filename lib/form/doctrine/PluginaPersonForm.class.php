@@ -17,15 +17,9 @@ abstract class PluginaPersonForm extends BaseaPersonForm
 		$this->validatorSchema['body'] = new sfValidatorHtml(array('required' => false));
 		$this->widgetSchema['sex']     = new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'Male', 'Ff' => 'Female')));
 		$this->validatorSchema['sex']  = new sfValidatorChoice(array('choices' => array(0 => '', 1 => 'M', 2 => 'F'), 'required' => false));
-		unset(
-		  $this['headshot_id'],
-		  $this['created_at'],
-		  $this['updated_at'],
-		  $this['slug']
-		);
+		unset($this['headshot_id'], $this['created_at'], $this['updated_at']);
 
 		// Alphabetize the Categories dropdown 
    	$this->getWidget('categories_list')->setOption('query', Doctrine::getTable('aCategory')->createQuery()->orderBy('aCategory.name asc'));	
 	}
-	
 }
