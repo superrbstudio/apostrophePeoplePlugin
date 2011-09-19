@@ -102,9 +102,13 @@ class BaseaPeopleActions extends aEngineActions
     }
 	}
 
-	protected function addFilterByNameParams($name)
+	protected function addFilterByNameParams($name, $ra = null)
 	{
-	  $ra = $this->query->getRootAlias();
+    if (!$ra)
+    {
+      $ra = $this->query->getRootAlias();
+    }
+    
 	  $nameParts = explode(' ', $name);
     $wheres = array();
     $params = array();
