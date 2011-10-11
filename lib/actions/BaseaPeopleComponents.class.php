@@ -32,7 +32,7 @@ class BaseaPeopleComponents extends sfComponents
     $defaults = array();
     $defaults['categories'] = aPeopleTools::getAttribute('categories_filter', array());
     $defaults['name'] = aPeopleTools::getAttribute('name_filter', '');
-
+    
     return $defaults;
   }
   
