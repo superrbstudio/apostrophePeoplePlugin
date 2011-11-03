@@ -1,7 +1,7 @@
-<?php 
+<?php
 	$page = aTools::getCurrentPage();
 	$editable = isset($editable) ? $sf_data->getRaw('editable') : null;
-	$user = sfContext::getInstance()->getUser();	
+	$user = sfContext::getInstance()->getUser();
 ?>
 
 <?php slot('body_class','a-people show') ?>
@@ -11,7 +11,7 @@
 <?php end_slot() ?>
 
 <?php if ($user->hasCredential('admin')): ?>
-	<div class="a-ui edit-person">		
+	<div class="a-ui edit-person">
 			<?php echo link_to('<span class="icon"></span>edit','/admin/people/'.$person->getId().'/edit', array('class'=>'a-btn icon no-label a-edit')) ?>
 	</div>
 <?php endif ?>

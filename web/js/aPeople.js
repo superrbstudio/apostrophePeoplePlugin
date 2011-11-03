@@ -10,12 +10,12 @@ function aPeopleConstructor()
 	    var personInfo = person.find('div.person-info');
 	    var bodyExpanded = person.find('div.person-info-expanded');
 			var spinner = $('<span class="a-spinner a-align-right"></span>');
-			
+
 			toggle.toggleClass('open');
-		
+
 	    if (bodyExpanded.hasClass('expanded'))
 	    {
-	    	// If this person's info was already ajax'd in, 
+	    	// If this person's info was already ajax'd in,
 				// bodyExpanded has the class .expanded
 				// So we can just toggle it open and closed
 				// Avoiding unnecessary Ajax requests for the same data over and over again ))<>((
@@ -29,7 +29,7 @@ function aPeopleConstructor()
 	        url: url,
 					beforeSend: function() {
 						// before we do it, show a spinner
-						toggle.append(spinner);						
+						toggle.append(spinner);
 					},
 	        success: function(data) {
 						// ok it's done, ditch that spinner

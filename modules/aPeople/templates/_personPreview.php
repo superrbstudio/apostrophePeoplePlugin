@@ -10,7 +10,7 @@
 <div class="person-details">
 	<?php if ($person->getBody()): ?>
 	<div class="person-body clearfix">
-	  <?php echo aHtml::limitWords($person->getBody(), 30) ?>
+	  <?php echo aHtml::limitWords(html_entity_decode($person->getBody()), 30) ?>
 	</div>
 	<?php endif ?>
 	<?php if ($person->getLink()): ?>
