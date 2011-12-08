@@ -33,10 +33,11 @@ class BaseaPeopleAdminActions extends autoAPeopleAdminActions
           'label' => 'Choose a person headshot', 
           'aMediaId' => $person->getHeadshotId(),
           'type' => 'image',
+          // ACHTUNG: if you change this it must remain consistent with _headshot.php or you will get distortion
           'minimum-width' => 170,
           'minimum-height' => 200,
-					'aspect-height' => 200,
 					'aspect-width' => 170, 
+					'aspect-height' => 200,
           'after' => $this->getController()->genUrl('aPeopleAdmin/headshot?id='.$person->getId())
         ));
 
