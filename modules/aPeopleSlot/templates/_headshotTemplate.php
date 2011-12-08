@@ -22,14 +22,10 @@
 		  )) ?>
 		</div>
 	<?php endif ?>
+  <?php $slug = $person->getEngineSlug() ?>
 	<div class="name">
-		<?php echo link_to($person->getName().(!($person->getSuffix()) ? null : ', '.$person->getSuffix()), 'aPeople_show', array('slug' => $person->getSlug(), 'engine-slug' => $person->getEngineSlug())) ?>
+		<?php echo link_to_if(strlen($slug), $person->getName().(!($person->getSuffix()) ? null : ', '.$person->getSuffix()), 'aPeople_show', array('slug' => $person->getSlug(), 'engine-slug' => $slug)) ?>
   </div>
-	<?php if ($person->getDepartment()): ?>
-	<div class="department">
-		<?php echo ($person->getDepartment()) ?>
-  </div>
-	<?php endif ?>
 	<?php if ($person->getEmail()): ?>
 	<div class="email">
 		<?php echo mail_to($person->getEmail(), $person->getEmail()) ?>
@@ -38,8 +34,10 @@
 	<div class="body">
 		<?php echo aHTML::limitWords(html_entity_decode($person->getBody()), 15, array('append_ellipsis' => true, )) ?>
 	</div>
-	<div class="read-more">
-		<?php echo link_to('View&nbsp;'.$person->getFirstName().'&#x27;s Profile', 'aPeople_show', array('slug' => $person->getSlug())) ?>
-	</div>
+	<?php if (strlen($slug)): ?>
+  	<div class="read-more">
+  		<?php echo link_to('View&nbsp;'.$person->getFirstName().'&#x27;s Profile', 'aPeople_show', array('slug' => $person->getSlug())) ?>
+  	</div>
+  <?php endif ?>
 </div>
 <?php endforeach ?>

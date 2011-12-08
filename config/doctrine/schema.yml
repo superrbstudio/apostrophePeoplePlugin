@@ -38,17 +38,23 @@ aPerson:
       type: string
     link:
       type: string(255)
-    sex:
-      type: enum
-      length: 1
-      values:
-        - "M"
-        - "F"
-      default: ""
-    ethnicity:
-      type: string(255)
     headshot_id:
       type: integer
+      
+    # Most projects don't need or want these columns. If you are gathering this data for
+    # statistical reporting purposes, you can add these columns to your schema.yml at
+    # project level and let Symfony merge them for you
+
+    # sex:
+    #   type: enum
+    #   length: 1
+    #   values:
+    #     - "M"
+    #     - "F"
+    #   default: ""
+    # ethnicity:
+    #   type: string(255)
+
   relations:
     Headshot:
       class: aMediaItem

@@ -16,7 +16,8 @@
 <?php foreach ($people as $person): ?>
 <div id="a-person-<?php echo $person->getId() ?>" class="a-person default">
 	<p class="name">
-		<?php echo link_to($person->getName(), 'aPeople_show', array('slug' => $person->getSlug(), 'engine-slug' => $person->getEngineSlug())) ?>
+	  <?php $slug = $person->getEngineSlug() ?>
+		<?php echo link_to_if(strlen($slug), $person->getName(), 'aPeople_show', array('slug' => $person->getSlug(), 'engine-slug' => $slug)) ?>
   </p>
 </div>
 <?php endforeach ?>

@@ -1,56 +1,6 @@
-# Apostrophe People Plugin for Apostrophe 1.5
+# Apostrophe
+
+Welcome to Apostrophe! 
 
 For complete and extensive documentation of Apostrophe please visit
-[trac.apostrophenow.org](http://trac.apostrophenow.org/wiki/ManualOverview). There you'll find a complete manual organized much more conveniently than is possible with a README file.
-
-The Apostrophe People Plugin lets you organize and display people on Apostrophe pages. You can filter, sort, and search for people. There is a robust administrative area for managing people in the system. Thanks to Symfony's excellent support for project-level overrides, you can add additional fields and relate other tables to people by extending the schema in your project.
-
-Installation:
-
-0. Enable the apostrophePeoplePlugin in your project's projectConfiguration Class [ /config/projectConfiguration.class.php ] :
-
-1. Add the People Engine to `templates` and the People Slot to the `slot_types` in app.yml [ /apps/frontend/config/app.yml ] :
-
-		a:
-			### Apostrophe Templates
-			templates:
-				...
-			  aPeople:
-			    default: People
-
-			...
-			### Apostrophe Slots
-			slot_types:
-				...
-			  aPeople: People                       # apostrophePeoplePlugin Slot
-
-2. The People Plugin requires some CSS and Javascript to fully function. Add these assets to your project level view.yml [ /apps/frontend/config/view.yml ] :
-
-		stylesheets:
-		  - /apostrophePeoplePlugin/css/aPeople.less
-		javascripts:
-		  - /apostrophePeoplePlugin/js/a.js
-
-3. Enable the People Plugin modules in your project's settings.yml [ /apps/frontend/config/settings.yml ] :
-
-	enabled_modules:
-		- aPeople
-		- aPeopleAdmin
-		- aPeopleSlot
-
-
-4. Add the People Slot to an Area or Singleton Slot in a page template [ /apps/frontend/modules/a/templates/defaultTemplate.php ] :
-
-		<?php a_area('example', array(
-			'allowed_types' => array(
-				'aRichText',
-				'aPeople',
-			),
-		  'type_options' => array(
-				'aRichText' => array(
-					'tool' => 'Main',
-				),
-				'aPeople' => array(
-					...
-				),
-				...
+[trac.apostrophenow.org](http://trac.apostrophenow.org/wiki/ManualOverview) and, for this plugin specifically, [the apostrophePeoplePlugin manual](http://trac.apostrophenow.org/wiki/apostrophePeoplePlugin). There you'll find a complete manual organized much more conveniently than is possible with a README file.
