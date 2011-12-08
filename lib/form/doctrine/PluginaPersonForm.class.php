@@ -19,7 +19,11 @@ abstract class PluginaPersonForm extends BaseaPersonForm
     $this->widgetSchema->setFormFormatterName('aAdmin');
 
 		$this->setWidget('body', new aWidgetFormRichTextarea(array('editor' => 'fck', 'height' => '300', 'width' => '500')));
-		$this->setWidget('sex', new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'Male', 'F' => 'Female'))));
+		// For projects that need this column (most do not)
+		if (isset($this['sex']))
+		{
+		  $this->setWidget('sex', new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'Male', 'F' => 'Female'))));
+		}
 		$this->getWidget('categories_list')->setOption('query', Doctrine::getTable('aCategory')->createQuery()->orderBy('aCategory.name asc')); // Alphabetize categories dropdown
 
    	// Set labels for form elements
@@ -81,12 +85,15 @@ abstract class PluginaPersonForm extends BaseaPersonForm
         'invalid' => 'Your website URL must be of the form http://yourwebsite.ext'
       )
     ));
-    $this->setValidator('sex', new sfValidatorChoice(
-      array('choices' => array(0 => '', 1 => 'M', 2 => 'F'), 'required' => false),
-      array(
-        'invalid' => 'Please specify a valid gender by selecting an option from the dropdown menu.'
-      )
-    ));
+    if (isset($this['sex']))
+    {
+      $this->setValidator('sex', new sfValidatorChoice(
+        array('choices' => array(0 => '', 1 => 'M', 2 => 'F'), 'required' => false),
+        array(
+          'invalid' => 'Please specify a valid gender by selecting an option from the dropdown menu.'
+        )
+      ));
+    }
     $this->setValidator('body', new sfValidatorHtml(
       array('required' => false)
     ));
