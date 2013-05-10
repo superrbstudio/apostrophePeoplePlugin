@@ -85,6 +85,7 @@ class BaseaPeopleActions extends aEngineActions
 
 	public function buildQuery()
 	{
+    $this->filtered = false;
 		$this->query = Doctrine::getTable('aPerson')
       ->createQuery('p')
 			->leftJoin('p.Categories c');
@@ -92,12 +93,14 @@ class BaseaPeopleActions extends aEngineActions
     $ids = $this->getQueryCategoryIds();
     if (count($ids))
 		{
+      $this->filtered = true;
 			$this->query->andWhereIn('c.id', $ids);
 		}
 
     $name = aPeopleTools::getAttribute('name_filter');
     if (!empty($name))
     {
+      $this->filtered = true;
       $this->addFilterByNameParams($name);
     }
 	}
